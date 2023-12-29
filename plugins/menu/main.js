@@ -31,9 +31,9 @@ const defaultMenu = {
 • Limit : *%limit*
 
  %readmore`.trimStart(),
-	header: '╭─「 %category 」',
-	body: '│ • %cmd',
-	footer: '╰────\n',
+	header: ' %category ',
+	body: ' • %cmd',
+	footer: '\n',
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname, isPrems }) => {
 	try {
