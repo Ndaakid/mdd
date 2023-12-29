@@ -3,7 +3,7 @@ import db from '../../lib/database.js'
 
 let handler = m => m
 
-export async function before(m) {
+export async function all(m) {
     let chat = db.data.chats[m.chat]
     let user = db.data.users[m.sender]
     let set = db.data.settings[this.user.jid]
@@ -16,6 +16,7 @@ export async function before(m) {
         await m.reply(`Prosess Download Kak~~`)
         await this.sendFile(m.chat, json.result.data.play, null, '© done gak bang?', m)
     }
+
     return !0
 }
 export default handler
