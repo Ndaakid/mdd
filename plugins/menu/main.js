@@ -89,7 +89,8 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, isPrems }) => {
 			readmore: readMore
 		}
 		text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-		await conn.sendFThumb(m.chat, db.data.datas.maingroupname, text.trim(), nais, db.data.datas.linkgc, m)
+		//await conn.sendFThumb(m.chat, db.data.datas.maingroupname, text.trim(), nais, db.data.datas.linkgc, m)
+		await  conn.reply(m.chat, text.trim(), m)
 	} catch (e) {
 		console.log(e)
 	}
