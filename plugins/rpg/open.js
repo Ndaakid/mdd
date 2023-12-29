@@ -189,7 +189,7 @@ let handler = async (m, { command, args, usedPrefix }) => {
 }
 
 handler.menufun = ['open', 'gacha'].map(v => v + ' [crate] [count]')
-handler.tagsfun = ['rpg']
+handler.tags = ['rpg']
 handler.command = /^(open|buka|gacha)$/i
 
 handler.premium = true

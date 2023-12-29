@@ -20,7 +20,7 @@ Successful use of *${count}* 🥤Potion(s)
 }
 
 handler.menufun = ['heal']
-handler.tagsfun = ['rpg']
+handler.tags = ['rpg']
 handler.command = /^(heal)$/i
 
 export default handler

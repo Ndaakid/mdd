@@ -19,7 +19,7 @@ sisa limit anda : ${lemon}
 }
 
 handler.menufun = ['limit']
-handler.tagsfun = ['rpg']
+handler.tags = ['rpg']
 handler.command = /^(limit)$/i
 
 export default handler

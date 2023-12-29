@@ -81,7 +81,7 @@ Kamu *${status}*, kamu ${status == 'Menang' ? `Mendapatkan *+${count * 2}*` : st
 }
 
 handler.menufun = ['judi [jumlah]']
-handler.tagsfun = ['rpg']
+handler.tags = ['rpg']
 handler.command = /^(judi|bet)$/i
 
 handler.group = true

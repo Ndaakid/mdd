@@ -36,7 +36,7 @@ let handler = async (m, { conn, isPrems, text }) => {
 }
 
 handler.menufun = ['profile']
-handler.tagsfun = ['rpg']
+handler.tags = ['rpg']
 handler.command = /^(profile?)$/i
 
 export default handler
