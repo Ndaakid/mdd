@@ -6,7 +6,6 @@ import { join } from 'path'
 import os from 'os'
 
 let tags = {
-	'submenu': '🎪 *SUB MENU*',
 	'searching': '🔎 *SEARCHING*',
 	'information': '🤖 *INFORMATION*',
 	'entertainment': '🎡 *ENTERTAINMENT*',
@@ -16,21 +15,22 @@ let tags = {
 }
 const defaultMenu = {
 	before: `
-╔═══ *「 %me 」* 
-║
-║⧐ ⸨ *.owner* ⸩
-║⧐ ⸨ *.info* ⸩
-║⧐ ⸨ *.levelup* ⸩
-╠═════════════════❍
-║⧐ 📈 Runtime : *%uptime*
-║⧐ 📈 OS Uptime : *%osuptime*
-╚═════════════════════
+*%me* 
 
-╭───「 *PROFILMU* 」
-├ • Nama  : %name!
-├ • Role : *%role*
-├ • Limit : *%limit*
-╰───────────── %readmore`.trimStart(),
+ ⸨ *.owner* ⸩
+ ⸨ *.info* ⸩
+ ⸨ *.levelup* ⸩
+
+ 📈 Runtime : *%uptime*
+ 📈 OS Uptime : *%osuptime*
+
+
+*PROFILMU*
+• Nama  : %name!
+• Role : *%role*
+• Limit : *%limit*
+
+ %readmore`.trimStart(),
 	header: '╭─「 %category 」',
 	body: '│ • %cmd',
 	footer: '╰────\n',
