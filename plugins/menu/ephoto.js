@@ -59,7 +59,8 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
 		}
 		text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
 		const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
-		await conn.sendFThumb(m.chat, db.data.datas.maingroupname, text.replace(`flower <text>`, `flower <text>${readMore}`).trim(), nais, db.data.datas.linkgc, m)
+		//await conn.sendFThumb(m.chat, db.data.datas.maingroupname, text.replace(`flower <text>`, `flower <text>${readMore}`).trim(), nais, db.data.datas.linkgc, m)
+		await conn.reply(m.chat, text.replace(`flower <text>`, `flower <text>${readMore}`).trim(), m)
 	} catch (e) {
 		console.log(e)
 	}
