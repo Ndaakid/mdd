@@ -3,7 +3,7 @@ import db from '../../lib/database.js'
 
 let handler = m => m
 
-handler.before = async function (m, { isPrems }) {
+export async function before(m) {
     let chat = db.data.chats[m.chat]
     let user = db.data.users[m.sender]
     let set = db.data.settings[this.user.jid]
@@ -18,4 +18,4 @@ handler.before = async function (m, { isPrems }) {
     }
     return !0
 }
-module.exports = handler
+export default handler
