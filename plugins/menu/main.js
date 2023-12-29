@@ -11,6 +11,7 @@ let tags = {
 	'entertainment': '🎡 *ENTERTAINMENT*',
 	'primbon': '🎆 *PRIMBON*',
 	'creator': '🖱💻 *CREATOR*',
+	'rpg': 'RPG MENU',
 	'tools': '✏️ *TOOLS MENU*',
 }
 const defaultMenu = {
