@@ -6,12 +6,12 @@ import { join } from 'path'
 import os from 'os'
 
 let tags = {
+	'submenu': '🎪 *SUB MENU*',
 	'searching': '🔎 *SEARCHING*',
 	'information': '🤖 *INFORMATION*',
 	'entertainment': '🎡 *ENTERTAINMENT*',
 	'primbon': '🎆 *PRIMBON*',
 	'creator': '🖱💻 *CREATOR*',
-	'rpg': 'RPG MENU',
 	'tools': '✏️ *TOOLS MENU*',
 }
 const defaultMenu = {

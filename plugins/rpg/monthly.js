@@ -25,7 +25,7 @@ let handler = async (m) => {
 }
 
 handler.menufun = ['monthly']
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(monthly)$/i
 
 handler.cooldown = cooldown

@@ -57,7 +57,7 @@ let handler = async (m, { usedPrefix, command }) => {
 }
 
 handler.menufun = ['adventure', 'petualang', 'berpetualang', 'mulung']
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(adventure|(ber)?petualang(ang)?|mulung)$/i
 
 handler.cooldown = cooldown

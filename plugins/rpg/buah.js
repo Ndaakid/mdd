@@ -13,7 +13,7 @@ let handler = async (m, { conn, usedPrefix, text }) => {
 }
 
 handler.menufun = ['buah']
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^((list)?(buah|fruits?))$/i
 
 export default handler

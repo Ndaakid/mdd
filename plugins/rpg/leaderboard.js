@@ -57,7 +57,7 @@ ${await sortedItem.slice(page * 25, page * 25 + 25).map((user, i) => `*[${i + 1}
 }
 
 handler.menufun = ['leaderboard [jumlah user]', 'lb [jumlah user]']
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(leaderboard|lb)$/i
 
 export default handler

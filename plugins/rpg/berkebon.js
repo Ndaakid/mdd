@@ -45,7 +45,7 @@ let handler = async (m, { conn, usedPrefix, command, text }) => {
 }
 
 handler.menufun = ['berkebun']
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(berkeb(o|u)n)$/i
 
 handler.cooldown = cooldown

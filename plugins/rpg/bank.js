@@ -31,7 +31,7 @@ let handler = async (m, { conn, args }) => {
 }
 
 handler.menufun = ['bank <opts>']
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(bank|atm)$/i
 
 export default handler

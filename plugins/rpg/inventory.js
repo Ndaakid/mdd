@@ -129,7 +129,7 @@ ${cooldowns}` : ''}
 }
 
 handler.menufun = ['inventory', 'inv']
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(inv(entory)?|bal(ance)?|money|e?xp)$/i
 
 export default handler

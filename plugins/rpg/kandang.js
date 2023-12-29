@@ -24,7 +24,7 @@ Gunakan *${usedPrefix}sell* untuk dijual atau *${usedPrefix}cook* untuk dijadika
 }
 
 handler.menufun = ['kandang']
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(kandang)$/i
 
 export default handler

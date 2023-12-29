@@ -32,7 +32,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 }
 
 handler.menufun = ['bansos']
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(bansos|korupsi)$/i
 
 export default handler

@@ -114,7 +114,7 @@ let handler = async (m, { command, usedPrefix, args }) => {
 }
 
 handler.menufun = ['build'].map(v => v + ' [item] [count]')
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(build(ing)?)$/i
 
 handler.premium = true

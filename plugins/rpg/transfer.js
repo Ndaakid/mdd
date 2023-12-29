@@ -70,7 +70,7 @@ handler.before = async m => {
 }
 
 handler.menufun = ['transfer', 'tf'].map(v => v + ' [type] [jumlah] [@tag]')
-handler.tags = ['rpg']
+handler.tagsfun = ['rpg']
 handler.command = /^(transfer|tf)$/i
 
 handler.group = true
