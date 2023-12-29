@@ -8,7 +8,7 @@ handler.before = async function (m, { isPrems }) {
     let user = db.data.users[m.sender]
     let set = db.data.settings[this.user.jid]
     if (m.chat.endsWith('broadcast')) return
-    if (chat.isBanned || user.banned || !chat.game || m.isBaileys) return
+    if (user.banned || !chat.game || m.isBaileys) return
 
     if (/https?:\/\/(www\.|v(t|m)\.|t\.)?tiktok\.com/i.test(m.text)) {
         //let res = await fetch(API('amel', '/tiktok', { url: m.text.match(/https?:\/\/(www\.|v(t|m)\.|t\.)?tiktok\.com\/.*/i)[0].split(/\n| /i)[0] }, 'apikey'))
