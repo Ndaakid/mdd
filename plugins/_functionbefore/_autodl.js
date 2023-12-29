@@ -1,6 +1,5 @@
-const { igdl, twitter, pin } = require('../lib/scrape')
-const { ytIdRegex, servers, yta, ytv } = require('../lib/y2mate')
-const fetch = require('node-fetch')
+import { tiktok } from 'betabotz-tools'
+import db from '../../lib/database.js'
 
 let handler = m => m
 
@@ -9,16 +8,13 @@ handler.before = async function (m, { isPrems }) {
     let user = db.data.users[m.sender]
     let set = db.data.settings[this.user.jid]
     if (m.chat.endsWith('broadcast')) return
-    if (chat.isBanned || user.banned || !chat.download || m.isBaileys) return
+    if (chat.isBanned || user.banned || m.isBaileys) return
 
     if (/https?:\/\/(www\.|v(t|m)\.|t\.)?tiktok\.com/i.test(m.text)) {
         //let res = await fetch(API('amel', '/tiktok', { url: m.text.match(/https?:\/\/(www\.|v(t|m)\.|t\.)?tiktok\.com\/.*/i)[0].split(/\n| /i)[0] }, 'apikey'))
-        let res = await fetch(`https://api.akuari.my.id/downloader/tiktok?link=${m.text}`)
-        if (!res.ok) return m.reply(eror)
-        let json = await res.json()
-        if (!json.status) return m.reply(this.format(json))
+        let json = await tiktokdl(m.text)
         await m.reply(`Prosess Download Kak~~`)
-        await this.sendFile(m.chat, json, null, '© done gak bang?', m)
+        await this.sendFile(m.chat, json.result.data.play, null, '© done gak bang?', m)
     }
     return !0
 }
