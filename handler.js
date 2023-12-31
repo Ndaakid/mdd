@@ -898,6 +898,7 @@ export async function handler(chatUpdate) {
 		}
 
 		const isMods = global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+		const isSepuh = global.sepuh.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 		const isROwner = isMods || [this.decodeJid(this.user.id), ...db.data.datas.rowner.map(([number]) => number)].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 		const isOwner = isROwner || m.fromMe || db.data.datas.owner.map(([number]) => number).map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 		const isPrems = isOwner || db.data.datas.prems.map(v => v.user).includes(m.sender)
@@ -1048,12 +1049,12 @@ export async function handler(chatUpdate) {
 					fail('owner', m, this)
 					continue
 				}
-				if (plugin.mods && !isMods) { // Moderator
-					fail('mods', m, this)
-					continue
-				}
 				if (plugin.premium && !isPrems && !m.isGroup) { // Premium
 					fail('premium', m, this)
+					continue
+				}
+				if (plugin.sepuh && !isSepuh && !m.isGroup) { // Sepuh
+					fail('sepuh', m, this)
 					continue
 				}
 				if (plugin.nsfw && m.isGroup && !db.data.chats[m.chat].nsfw) {
@@ -1283,6 +1284,7 @@ global.dfail = (type, m, conn) => {
 		owner: `*「OWNER BOT ONLY」*`,
 		mods: `*「DEV / MODS ONLY」*`,
 		premium: `*「PREMIUM USER ONLY」*\n\n*Or Free to Use All Commands in the Group :*\n${db.data.datas.linkgc || 'https://chat.whatsapp.com/EzxQmm6lU7206XIMZ32wqs'}\n\nOtherwise type this : *.privatecmd*`,
+		sepuh: `*[COMMAND INI HANYA KHUSUS UNTUK USERS SEPUH]*`,
 		group: `*「GROUP ONLY」*`,
 		private: `*「PRIVATE CHAT ONLY」*`,
 		admin: `*「ADMIN GROUP ONLY」*`,

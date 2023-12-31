@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url'
 
 // Real Owner moved to db.data.datas.rowner
 global.mods = ['6285640575421', '628816415814', '6282370999943'] // Developer / Mods Number
+global.sepuh = ['']
 global.APIs = { // API Prefix
 	// name: 'https://website'
 	nrtm: 'https://nurutomo.herokuapp.com',

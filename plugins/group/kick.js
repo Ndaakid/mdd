@@ -28,5 +28,6 @@ handler.command = /^(kick|tendang)$/i
 handler.admin = true
 handler.botAdmin = true
 handler.group = true
+handler.premium = true
 
 export default handler
