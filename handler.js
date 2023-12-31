@@ -1049,11 +1049,11 @@ export async function handler(chatUpdate) {
 					fail('owner', m, this)
 					continue
 				}
-				if (plugin.premium && !isPrems && !m.isGroup) { // Premium
+				if (plugin.premium && !isPrems) { // Premium
 					fail('premium', m, this)
 					continue
 				}
-				if (plugin.sepuh && !isSepuh && !m.isGroup) { // Sepuh
+				if (plugin.sepuh && !isSepuh) { // Sepuh
 					fail('sepuh', m, this)
 					continue
 				}
