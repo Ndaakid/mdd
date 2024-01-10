@@ -18,6 +18,8 @@ const defaultMenu = {
 	before: `
 *%me* 
 
+Group Official : https://chat.whatsapp.com/JnNNHb8wah55lTeaxjLjwy
+
  ⸨ *.owner* ⸩
  ⸨ *.info* ⸩
  ⸨ *.levelup* ⸩
