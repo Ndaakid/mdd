@@ -14,7 +14,7 @@ handler.all = async function (m) {
     let user = db.data.users[m.sender]
   
     if (/https?:\/\/(www\.|v(t|m)\.|t\.)?tiktok\.com/i.test(m.text)) {
-    let json = await tiktok(text)
+    let json = await tiktok(m.text.match(/https?:\/\/(www\.|v(t|m)\.|t\.)?tiktok\.com\/.*/i)[0].split(/\n| /i)[0])
     this.sendFile(m.chat, json.result.data.play, m)
     }
     }
