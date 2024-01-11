@@ -15,7 +15,7 @@ handler.all = async function (m) {
   
     if (/https?:\/\/(www\.|v(t|m)\.|t\.)?tiktok\.com/i.test(m.text)) {
     let json = await tiktok(text)
-    conn.sendFile(m.chat, json.result.data.play, m)
+    this.sendFile(m.chat, json.result.data.play, m)
     }
     }
 
