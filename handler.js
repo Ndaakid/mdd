@@ -829,10 +829,14 @@ export async function handler(chatUpdate) {
 				if (!('self' in settings)) settings.self = false
 				if (!('autoread' in settings)) settings.autoread = false
 				if (!('restrict' in settings)) settings.restrict = false
+				if (!'backup' in settings) settings.backup = false
+				if (!isNumber(settings.backupDB)) settings.backupDB = 0
 			} else db.data.settings[this.user.jid] = {
 				self: false,
 				autoread: false,
-				restrict: false
+				restrict: false,
+				backup: false,
+                                backupDB: 0
 			}
 			let datas = db.data.datas
 			if (typeof datas !== 'object') db.data.datas = {}
