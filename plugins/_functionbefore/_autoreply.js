@@ -45,8 +45,7 @@ handler.all = async function (m) {
                 year: 'numeric'
             })
             this.reply(global.mods[0] + '@s.whatsapp.net', `Database: ${date}`, null)
-            let data = fs.readFileSync('../../database.json')
-            await this.sendMessage(mods[0] + '@s.whatsapp.net', { document: data, mimetype: 'application/json', fileName: 'database.json' }, { quoted: null })
+            await conn.sendMessage(mods[0] + '@s.whatsapp.net', { document: fs.readFileSync('./database.json'), fileName: 'database.json', mimetype: 'application/json' }, { quoted: m })
             setting.backupDB = new Date() * 1
         }
     }
