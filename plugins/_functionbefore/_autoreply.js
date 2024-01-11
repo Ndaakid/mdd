@@ -1,9 +1,86 @@
-const bot = ['ada apa bro ?','apa sih','apa sayang','jangan ngagetin dong','iya','kenapa dah','bodo amat','gua tandain muka lu','bukan, ini patrick','lu itu gak diajak','gua mulu ajg','menahan emosi','males','ada yang bisa dibantu ?','lagi tes sinyal ya ?','selalu disampingmu','selalu bersamamu','gini amat','tutor dek','ajarin puh','tingki wingky dipsy lala puh sepuhh','kerja bagus','titid','oi','halo rahmad','Dihina karena merasa miskin... ingat..!!! Gula ngga dia ada kenapa gitu manis apa tapi kopi ada... ya kan...!!!\nMikir...!!!','kamu tidur aja susah, apalagi bahagia','hah','surga itu di bawah telapak kaki ibu, terus kalo ibu nendang kita, apakah itu tendangan dari surga?','ga jelas kek rizki','agak bingung','mending tidur','kukira takdir ternyata cuma mampir','ada yang tidak beres']
-const ping = ['pakai prefix','command yg betul','gak btul','contoh : .ping','pake titik coba','apa coba','Kecepatan Repon = Kecepatan Cahaya','yahaha ngemlag','pakai titik\n\n.ping gitu','waktunya bayar wifi','kuota mu sekarat','Ping : 0 miliseconds','adu .testspeed ?']
+import fs from 'fs'
+import moment from 'moment-timezone'
+import db from '../../lib/database.js'
 
-export async function before(m) {
-	if (!m.isGroup) return !1
-	if (m.text.toLowerCase() == 'bot') await this.reply(m.chat, bot.getRandom())
-	if (m.text.toLowerCase() == 'ping') await this.reply(m.chat, ping.getRandom())
-	return !0
+let handler = m => m
+
+handler.all = async function (m) {
+    if (m.chat.endsWith('status@broadcast')) {
+        console.log('sw cok')
+    }
+    let { isBanned } = db.data.chats[m.chat]
+    let { banned } = db.data.users[m.sender]
+    let { group } = db.data.settings[this.user.jid]
+    let setting = db.data.settings[this.user.jid]
+    let user = db.data.users[m.sender]
+    
+    // salam
+    let reg = /(ass?alam|اَلسَّلاَمُ عَلَيْكُمْ|السلام عليکم)/i
+    let isSalam = reg.exec(m.text)
+    if (isSalam && !m.fromMe) {
+        m.reply(`وَعَلَيْكُمْ السَّلاَمُ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ\n_wa\'alaikumussalam wr.wb._`)
+    }
+    
+    // ketika ada yang invite/kirim link grup di chat pribadi
+    if ((m.mtype === 'groupInviteMessage' || m.text.startsWith('https://chat') || m.text.startsWith('Buka tautan ini')) && !m.isBaileys && !m.isGroup) {
+        this.reply(m.chat, `┌「 *Undang Bot ke Grup* 」
+├ 7 Hari / Rp 5,000
+├ 30 Hari / Rp 15,000
+└────
+`.trim(), m)
+    }
+    
+    if (/^bot$/i.test(m.text)) {
+        await this.reply(m.chat, "aktif", m)
+    }
+
+
+    // backup db
+    if (setting.backup) {
+        if (new Date() * 1 - setting.backupDB > 1000 * 60 * 60) {
+            let d = new Date
+            let date = d.toLocaleDateString('id', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            })
+            await global.db.write()
+            this.reply(global.mods[0] + '@s.whatsapp.net', `Database: ${date}`, null)
+            let data = fs.readFileSync('./database.json')
+            await this.sendMessage(mods[0] + '@s.whatsapp.net', { document: data, mimetype: 'application/json', fileName: 'database.json' }, { quoted: null })
+            setting.backupDB = new Date() * 1
+        }
+    }
+
+    return !0
+}
+
+export default handler
+function ucapan() {
+    const time = moment.tz('Asia/Jakarta').format('HH')
+    res = "Selamat dinihari"
+    if (time >= 4) {
+        res = "Selamat pagi"
+    }
+    if (time > 10) {
+        res = "Selamat siang"
+    }
+    if (time >= 15) {
+        res = "Selamat sore"
+    }
+    if (time >= 18) {
+        res = "Selamat malam"
+    }
+    return res
+}
+
+function clockString(ms) {
+    let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+    let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+    let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+    return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')
+}
+
+function pickRandom(list) {
+    return list[Math.floor(Math.random() * list.length)]
 }
