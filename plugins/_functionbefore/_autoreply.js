@@ -1,6 +1,6 @@
+import db from '../../lib/database.js'
 import fs from 'fs'
 import moment from 'moment-timezone'
-import db from '../../lib/database.js'
 
 let handler = m => m
 
